@@ -293,7 +293,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
           </button>
         </div>
 
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative max-w-2xl mx-auto mt-8 shadow-md rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-zinv-400">
             <thead className="text-xs text-zinc-400 uppercase bg-[#232325]">
               <tr>
@@ -301,57 +301,43 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
                   Time
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  X
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  X
-                </th>
-                <th scope="col" className="px-6 py-3">
                   Price
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Action
+                  Riders
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+              <tr className=" bg-zinc-900 border-b border-zinc-600">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 font-medium  whitespace-nowrap"
                 >
-                  Apple MacBook Pro 17"
+                  3:13
                 </th>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
-                </td>
+                <td className="px-6 py-4">$42</td>
+                <td className="px-6 py-4">1</td>
               </tr>
-              <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+              <tr className=" border-b border-zinc-600">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 font-medium whitespace-nowrap text-white"
                 >
-                  Microsoft Surface Pro
+                  2:13
                 </th>
-                <td className="px-6 py-4">White</td>
-                <td className="px-6 py-4">Laptop PC</td>
-                <td className="px-6 py-4">$1999</td>
-                <td className="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
-                </td>
+                <td className="px-6 py-4">$36</td>
+                <td className="px-6 py-4">2</td>
+              </tr>
+              <tr className="odd:bg-zinc-900 even:bg-gray-800 border-b dark:border-zinc-700">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium whitespace-nowrap text-white"
+                >
+                  2:13
+                </th>
+                <td className="px-6 py-4">$36</td>
+                <td className="px-6 py-4">2</td>
               </tr>
             </tbody>
           </table>
