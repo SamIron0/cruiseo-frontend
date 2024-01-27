@@ -295,7 +295,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
 
         <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
-            <thead className="text-xs text-zinc-400 uppercase bg-[#232325]">
+            <thead className="text-xs text-zinc-400 uppercase bg-zinc-900">
               <tr className="">
                 <th scope="col" className="pl-10 py-3">
                   Time
@@ -319,7 +319,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
                 <td className="px-6 py-4">$42</td>
                 <td className="px-6 py-4">1</td>
               </tr>
-              <tr className=" border-b bg-zinc-700 border-zinc-600">
+              <tr className=" border-b bg-zinc-800 border-zinc-600">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium whitespace-nowrap text-white"
