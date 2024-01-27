@@ -264,6 +264,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
       </div>
     </Container>
   );
+  
 };
 
 export default ListingClient;
