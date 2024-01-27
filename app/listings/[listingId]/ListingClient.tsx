@@ -293,17 +293,17 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
           </button>
         </div>
 
-        <div className="relative max-w-2xl mx-auto mt-8 shadow-md rounded-lg">
+        <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
             <thead className="text-xs text-zinc-400 uppercase bg-[#232325]">
-              <tr>
-                <th scope="col" className="px-6 py-3">
+              <tr className="">
+                <th scope="col" className="pl-10 py-3">
                   Time
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="pl-10 py-3">
                   Price
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="pl-10 py-3">
                   Riders
                 </th>
               </tr>
