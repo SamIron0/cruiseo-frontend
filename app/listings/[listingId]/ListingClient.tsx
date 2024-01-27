@@ -142,6 +142,60 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     { property: 'Component', description: 'DOM element to use', operation: '' },
     { property: <Text b>bold</Text>, description: 'Bold style', operation: '' }
   ];
+  const [isEven, setIsEven] = useState(false);
+
+  const renderTripRow = (trip: Trip) => {
+    setIsEven(!isEven);
+    return (
+      <button
+        disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
+        onClick={() => setSelectedTrip(trip)}
+      >
+        <tr className="  border-b border-zinc-600">
+          <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
+            {trip.date}
+          </th>
+          <td className="pl-10 py-4 ">
+            {loadedPrices?.get(trip.id) ? (
+              loadedPrices.get(trip.id)
+            ) : (
+              <button
+                onClick={() => getPrice(trip)}
+                disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
+                className="flex text-sm justify-center items-center px-2 py-1 bg-zinc-100 text-black rounded-lg shadow flex-shrink-0 active:bg-zinc-300 transition duration-150 transform active:scale-110"
+              >
+                show
+              </button>
+            )}
+          </td>
+          <td className="pl-10 py-4 text-zinc-400"> {trip.user_ids?.length}</td>
+        </tr>
+        <tr
+          className={`
+                  " border-b  border-zinc-600"${isEven && 'bg-zinc-800'}`}
+        >
+          <th
+            scope="row"
+            className="px-6 py-4 font-medium whitespace-nowrap text-white"
+          >
+            {trip.date}
+          </th>
+          <td className="px-6 py-4">$36</td>
+          <td className="px-6 py-4">2</td>
+        </tr>
+        <tr className="border-b  border-zinc-600">
+          <th
+            scope="row"
+            className="px-6 py-4 font-medium whitespace-nowrap text-white"
+          >
+            2:13
+          </th>
+          <td className="px-6 py-4">$36</td>
+          <td className="px-6 py-4">2</td>
+        </tr>
+      </button>
+    );
+  };
   const [data, setData] = useState(dataSource);
   const renderAction = (value: any, rowData: any, rowIndex: number) => {
     const updateHandler = () => {
@@ -206,70 +260,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             id={listing?.id}
           />
           <div className="sm:flex sm:flex-1 gap-4 ">
-            <div className="w-full sm:pr-6 ">
-              {listing.activeTrips?.map((trip: any) => (
-                <div className="w-full pb-3">
-                  {/* Content */}
-                  <div
-                    className="max-w-xl md:max-w-none md:w-full sm:mx-auto md:col-span-7 lg:col-span-6 "
-                    data-aos="fade-right"
-                  >
-                    {/* Tabs buttons */}
-                    <div className=" text-white">
-                      <div
-                        className={`flex justify-between bg-zinc-800  w-full items-center text-lg p-3 rounded-lg  transition duration-300 ease-in-out hover:shadow-lg ${
-                          selectedTrip.id === trip.id
-                            ? `shadow-lg border-blue-500 border first-letter:hover:shadow-lg`
-                            : `  shadow-md border border-zinc-600 `
-                        }`}
-                      >
-                        <div className="flex flex-col">
-                          <div className="font-normal text-sm text-zinc-300 leading-snug tracking-tight mb-1">
-                            Price:{' '}
-                            <span className="text-white font-semibold">
-                              {loadedPrices?.get(trip.id)}
-                            </span>
-                          </div>
-
-                          <div className="font-normal text-sm text-zinc-300 text-smleading-snug tracking-tight mb-1">
-                            Time:{' '}
-                            <span className="text-white font-semibold">
-                              {trip.date}
-                            </span>
-                          </div>
-                          <div className="font-normal text-sm text-zinc-300 leading-snug tracking-tight mb-1">
-                            Riders:{' '}
-                            <span className="text-white font-semibold">
-                              {trip.user_ids.length}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex gap-2 flex-col">
-                          <button
-                            onClick={() => getPrice(trip)}
-                            disabled={
-                              isLoading ||
-                              loadedPrices?.get(trip.id) !== undefined
-                            }
-                            className="flex text-sm pb-2 justify-center items-center px-4 py-2 bg-zinc-100 text-black rounded-lg shadow flex-shrink-0 ml-3 active:bg-zinc-300 transition duration-150 transform active:scale-110"
-                          >
-                            Show Price
-                          </button>
-
-                          <button
-                            disabled={isLoading || trip.id == selectedTrip.id}
-                            onClick={() => setSelectedTrip(trip)}
-                            className="flex text-sm justify-center items-center px-4 py-2 bg-fuchsia-600 text-white rounded-lg shadow flex-shrink-0 ml-3 active:bg-fuchsia-800 transition duration-150 transform active:scale-110"
-                          >
-                            Select
-                          </button>
-                        </div>
-                      </div>{' '}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="w-full sm:pr-6 "></div>
             {window.innerWidth > 640 && (
               <div className="h-[450px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-10"></div>
             )}{' '}
@@ -295,7 +286,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
 
         <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
-            <thead className="text-xs text-zinc-400 uppercase bg-zinc-900">
+            <thead className="text-xs text-white uppercase bg-zinc-900">
               <tr className="">
                 <th scope="col" className="pl-10 py-3">
                   Time
@@ -309,36 +300,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               </tr>
             </thead>
             <tbody>
-              <tr className="  border-b border-zinc-600">
-                <th
-                  scope="row"
-                  className="pl-10 py-4 font-medium text-white whitespace-nowrap"
-                >
-                  3:13
-                </th>
-                <td className="pl-10 py-4">$42</td>
-                <td className="pl-10 py-4">1</td>
-              </tr>
-              <tr className=" border-b bg-zinc-800 border-zinc-600">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap text-white"
-                >
-                  2:13
-                </th>
-                <td className="px-6 py-4">$36</td>
-                <td className="px-6 py-4">2</td>
-              </tr>
-              <tr className="border-b  border-zinc-600">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap text-white"
-                >
-                  2:13
-                </th>
-                <td className="px-6 py-4">$36</td>
-                <td className="px-6 py-4">2</td>
-              </tr>
+              {listing.activeTrips?.map((trip: any) => renderTripRow(trip))}
             </tbody>
           </table>
         </div>
