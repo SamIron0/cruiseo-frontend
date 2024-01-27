@@ -294,7 +294,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
         </div>
 
         <div className="relative max-w-2xl mx-auto mt-8 shadow-md rounded-lg">
-          <table className="w-full text-sm text-left rtl:text-right text-zinv-400">
+          <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
             <thead className="text-xs text-zinc-400 uppercase bg-[#232325]">
               <tr>
                 <th scope="col" className="px-6 py-3">
@@ -309,17 +309,17 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               </tr>
             </thead>
             <tbody>
-              <tr className=" bg-zinc-900 border-b border-zinc-600">
+              <tr className="  border-b border-zinc-600">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium  whitespace-nowrap"
+                  className="px-6 py-4 font-medium text-white whitespace-nowrap"
                 >
                   3:13
                 </th>
                 <td className="px-6 py-4">$42</td>
                 <td className="px-6 py-4">1</td>
               </tr>
-              <tr className=" border-b border-zinc-600">
+              <tr className=" border-b bg-zinc-700 border-zinc-600">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium whitespace-nowrap text-white"
@@ -329,7 +329,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
                 <td className="px-6 py-4">$36</td>
                 <td className="px-6 py-4">2</td>
               </tr>
-              <tr className="odd:bg-zinc-900 even:bg-gray-800 border-b dark:border-zinc-700">
+              <tr className="border-b  border-zinc-600">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium whitespace-nowrap text-white"
