@@ -312,12 +312,12 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               <tr className="  border-b border-zinc-600">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-white whitespace-nowrap"
+                  className="pl-10 py-4 font-medium text-white whitespace-nowrap"
                 >
                   3:13
                 </th>
-                <td className="px-6 py-4">$42</td>
-                <td className="px-6 py-4">1</td>
+                <td className="pl-10 py-4">$42</td>
+                <td className="pl-10 py-4">1</td>
               </tr>
               <tr className=" border-b bg-zinc-800 border-zinc-600">
                 <th
