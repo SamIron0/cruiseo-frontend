@@ -144,83 +144,72 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
   ];
   const [isEven, setIsEven] = useState(false);
 
-  const renderTripRow = (trip: Trip) => {
-    setIsEven(!isEven);
-    return (
-      <button
-        disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
-        onClick={() => setSelectedTrip(trip)}
-      >
-        <tr className="  border-b border-zinc-600">
-          <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
-            {trip.date}
-          </th>
-          <td className="pl-10 py-4 ">
-            {loadedPrices?.get(trip.id) ? (
-              loadedPrices.get(trip.id)
-            ) : (
-              <button
-                onClick={() => getPrice(trip)}
-                disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
-                className="flex text-sm justify-center items-center px-2 py-1 bg-zinc-100 text-black rounded-lg shadow flex-shrink-0 active:bg-zinc-300 transition duration-150 transform active:scale-110"
+  const renderTripRows = () => {
+    {
+      listing.activeTrips?.map((trip: any) => {
+        setIsEven(!isEven);
+        return (
+          <button
+            disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
+            onClick={() => setSelectedTrip(trip)}
+          >
+            <tr className="  border-b border-zinc-600">
+              <th
+                scope="row"
+                className="pl-10 py-4 font-medium whitespace-nowrap"
               >
-                show
-              </button>
-            )}
-          </td>
-          <td className="pl-10 py-4 text-zinc-400"> {trip.user_ids?.length}</td>
-        </tr>
-        <tr
-          className={`
+                {trip.date}
+              </th>
+              <td className="pl-10 py-4 ">
+                {loadedPrices?.get(trip.id) ? (
+                  loadedPrices.get(trip.id)
+                ) : (
+                  <button
+                    onClick={() => getPrice(trip)}
+                    disabled={
+                      isLoading || loadedPrices?.get(trip.id) !== undefined
+                    }
+                    className="flex text-sm justify-center items-center px-2 py-1 bg-zinc-100 text-black rounded-lg shadow flex-shrink-0 active:bg-zinc-300 transition duration-150 transform active:scale-110"
+                  >
+                    show
+                  </button>
+                )}
+              </td>
+              <td className="pl-10 py-4 text-zinc-400">
+                {' '}
+                {trip.user_ids?.length}
+              </td>
+            </tr>
+            <tr
+              className={`
                   " border-b  border-zinc-600"${isEven && 'bg-zinc-800'}`}
-        >
-          <th
-            scope="row"
-            className="px-6 py-4 font-medium whitespace-nowrap text-white"
-          >
-            {trip.date}
-          </th>
-          <td className="px-6 py-4">$36</td>
-          <td className="px-6 py-4">2</td>
-        </tr>
-        <tr className="border-b  border-zinc-600">
-          <th
-            scope="row"
-            className="px-6 py-4 font-medium whitespace-nowrap text-white"
-          >
-            2:13
-          </th>
-          <td className="px-6 py-4">$36</td>
-          <td className="px-6 py-4">2</td>
-        </tr>
-      </button>
-    );
+            >
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium whitespace-nowrap text-white"
+              >
+                {trip.date}
+              </th>
+              <td className="px-6 py-4">$36</td>
+              <td className="px-6 py-4">2</td>
+            </tr>
+            <tr className="border-b  border-zinc-600">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium whitespace-nowrap text-white"
+              >
+                2:13
+              </th>
+              <td className="px-6 py-4">$36</td>
+              <td className="px-6 py-4">2</td>
+            </tr>
+          </button>
+        );
+      });
+    }
   };
   const [data, setData] = useState(dataSource);
-  const renderAction = (value: any, rowData: any, rowIndex: number) => {
-    const updateHandler = () => {
-      setData((last) => {
-        return last.map((item, dataIndex) => {
-          if (dataIndex !== rowIndex) return item;
-          return {
-            ...item,
-            property: Math.random().toString(16).slice(-5)
-          };
-        });
-      });
-    };
-    return (
-      <Button
-        type="secondary"
-        auto
-        scale={1 / 3}
-        font="12px"
-        onClick={updateHandler}
-      >
-        Update
-      </Button>
-    );
-  };
+
   return (
     <Container>
       <div
@@ -299,9 +288,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {listing.activeTrips?.map((trip: any) => renderTripRow(trip))}
-            </tbody>
+            <tbody>{renderTripRows()}</tbody>
           </table>
         </div>
       </div>
