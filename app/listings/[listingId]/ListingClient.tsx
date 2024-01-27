@@ -12,7 +12,7 @@ import { useListings } from '@/app/providers/ListingProvider';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-
+import { Button, Page, Table, Text } from '@geist-ui/core';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -136,6 +136,37 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     setIsLoading(false);
   };
   const [selectedDate, setSelectedDate] = useState();
+
+  const dataSource = [
+    { property: 'type', description: 'Content type', operation: '' },
+    { property: 'Component', description: 'DOM element to use', operation: '' },
+    { property: <Text b>bold</Text>, description: 'Bold style', operation: '' }
+  ];
+  const [data, setData] = useState(dataSource);
+  const renderAction = (value: any, rowData: any, rowIndex: number) => {
+    const updateHandler = () => {
+      setData((last) => {
+        return last.map((item, dataIndex) => {
+          if (dataIndex !== rowIndex) return item;
+          return {
+            ...item,
+            property: Math.random().toString(16).slice(-5)
+          };
+        });
+      });
+    };
+    return (
+      <Button
+        type="secondary"
+        auto
+        scale={1 / 3}
+        font="12px"
+        onClick={updateHandler}
+      >
+        Update
+      </Button>
+    );
+  };
   return (
     <Container>
       <div
@@ -261,10 +292,20 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             Reserve
           </button>
         </div>
+
+        <Table data={data} onChange={(value) => setData(value)}>
+          <Table.Column prop="property" label="property" />
+          <Table.Column prop="description" label="description" />
+          <Table.Column
+            prop="operation"
+            label="operation"
+            width={150}
+            render={renderAction}
+          />
+        </Table>
       </div>
     </Container>
   );
-  
 };
 
 export default ListingClient;
