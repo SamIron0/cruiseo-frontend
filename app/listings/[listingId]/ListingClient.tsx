@@ -13,6 +13,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { Button, Page, Table, Text } from '@geist-ui/core';
+import { TbCar, TbShoppingCart } from 'react-icons/tb';
+import CategoryBox from '@/components/CategoryBox';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -149,20 +151,16 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
         setSelectedTrip(trip);
       }}
       className={`
-    ${
-      selectedTrip.id === trip.id
-        ? ' '
-        : `border-b border-zinc-700 ${i % 2 && 'bg-zinc-800'}`
-    }`}
+    ${`border-b border-zinc-700 ${i % 2 && 'bg-zinc-800'}`}`}
     >
       <td className="flex pl-2 items-center">
         {selectedTrip.id === trip.id ? (
           <input
             type="radio"
-            className="w-4 h-4 border border-blue-500 bg-blue-500 p-1 "
+            className="w-4 h-4 border border-blue-500 bg-blue-500 p-2 "
           />
         ) : (
-          <div className="w-4 h-4 bg-gray-100 border-gray-300" />
+          <input type="radio" className="w-4 h-4 bg-gray-100 border-gray-300" />
         )}
       </td>
       <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
@@ -187,6 +185,20 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
 
   const [data, setData] = useState(dataSource);
 
+  const categories = [
+    {
+      label: 'Existing',
+      icon: TbCar,
+      description: 'View All Available Destinations!'
+    },
+    {
+      label: 'New Trip',
+      icon: TbShoppingCart,
+      description: 'This property is has windmills!'
+    }
+  ];
+
+  const [activeCategory, setActiveCategory] = useState(categories[0].label);
   return (
     <Container>
       <div
@@ -225,6 +237,25 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             locationValue={listing?.address}
             id={listing?.id}
           />
+
+          <Container>
+            <div
+              className="
+        pt-4 flex px-10 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between overflow-x-auto"
+            >
+              {categories.map((item, index) => (
+                <CategoryBox
+                  key={item.label}
+                  label={item.label}
+                  icon={item.icon}
+                  selected={activeCategory === item.label}
+                  onCategoryClick={setActiveCategory(item.label)}
+                  // Apply margin-right except for the last item
+                />
+              ))}
+            </div>
+          </Container>
+
           <div className="sm:flex sm:flex-1 gap-4 ">
             <div className="w-full sm:pr-6 ">
               <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
@@ -248,14 +279,15 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               </div>{' '}
             </div>
           </div>
-
-          <button
-            className=" rounded-lg py-2 px-8 bg-blue-500 text-md"
-            onClick={() => onCreateReservation()}
-            disabled={isLoading}
-          >
-            Reserve
-          </button>
+          <span className="w-full flex justify-center">
+            <button
+              className=" rounded-lg py-2 px-8 max-w-2xl bg-blue-500 text-md"
+              onClick={() => onCreateReservation()}
+              disabled={isLoading}
+            >
+              Reserve
+            </button>
+          </span>
         </div>
       </div>
     </Container>
