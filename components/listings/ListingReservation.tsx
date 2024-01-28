@@ -26,22 +26,24 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
   disabledDates
 }) => {
   return (
-    <div
-      className="
+    <div>
+      <DateTimePicker />
+
+      <div
+        className="
       bg-white 
         rounded-xl 
         border-[1px]
       border-neutral-200 
         overflow-hidden
       "
-    >
-      <DateTimePicker />
-      <div className="p-4">
-        <Button disabled={disabled} label="Reserve" onClick={onSubmit} />
-      </div>
-      <hr />
-      <div
-        className="
+      >
+        <div className="p-4">
+          <Button disabled={disabled} label="Reserve" onClick={onSubmit} />
+        </div>
+        <hr />
+        <div
+          className="
           p-4 
           flex 
           flex-row 
@@ -50,9 +52,10 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
           font-semibold
           text-lg
         "
-      >
-        <div>Total</div>
-        <div>₹ {totalPrice}</div>
+        >
+          <div>Total</div>
+          <div>₹ {totalPrice}</div>
+        </div>
       </div>
     </div>
   );
