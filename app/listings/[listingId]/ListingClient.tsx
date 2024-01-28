@@ -157,7 +157,10 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     >
       <td className="flex pl-2 items-center">
         {selectedTrip.id === trip.id ? (
-          <input  type='radio' className="w-4 h-4 border border-blue-500 bg-blue-500 p-1 " />
+          <input
+            type="radio"
+            className="w-4 h-4 border border-blue-500 bg-blue-500 p-1 "
+          />
         ) : (
           <div className="w-4 h-4 bg-gray-100 border-gray-300" />
         )}
@@ -243,12 +246,6 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
                   <tbody>{renderTripRows}</tbody>
                 </table>
               </div>{' '}
-            </div>
-            {window.innerWidth > 640 && (
-              <div className="h-[450px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-10"></div>
-            )}{' '}
-            <div className="w-full sm:pl-6 flex items-center justify-center">
-              x
             </div>
           </div>
 
