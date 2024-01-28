@@ -235,7 +235,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               loadedPrices={loadedPrices}
             />
           ) : (
-            <div className="p-4 flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <ListingReservation
                 price={20}
                 totalPrice={200}
