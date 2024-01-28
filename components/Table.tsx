@@ -45,7 +45,7 @@ const Table = ({
           <button
             onClick={() => getPrice(trip)}
             disabled={priceIsLoading}
-            className="text-sm px-2 py-1 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
+            className="text-sm px-2 py-2 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
           >
             show
           </button>

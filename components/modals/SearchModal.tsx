@@ -129,10 +129,7 @@ const SearchModal = () => {
           title="When do you plan to go?"
           subtitle="Make sure everyone is free!"
         />
-        <Calendar
-          onChange={(value: any) => setDateRange(value.selection)}
-          value={dateRange}
-        />
+      
       </div>
     );
   }
