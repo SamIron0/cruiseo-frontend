@@ -28,7 +28,7 @@ const Table = ({
       className={`
     ${`border-b border-zinc-700 ${i % 2 && 'bg-zinc-800'}`}`}
     >
-      <td className=" pl-2 py-4 ">
+      <td className=" pl-8 py-4 ">
         {selectedTrip.id === trip.id ? (
           <input className="w-4 h-4 rounded-full border border-blue-500 bg-blue-500 p-1 " />
         ) : (

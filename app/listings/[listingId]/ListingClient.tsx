@@ -195,19 +195,22 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             locationValue={listing?.address}
             id={listing?.id}
           />
-
-          {categories.map((item) => (
-            <div key={item.label}>
-              <CategoryBox
-            key={item.label}
-            label={item.label}
-            icon={item.icon}
-            selected={activeCategory === item.label}
-            onCategoryClick={() => setActiveCategory(item.label)}
-          />
-
+          <Container>
+            <div
+              className="
+        pt-4 flex px-10 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between overflow-x-auto"
+            >
+              {categories.map((item, index) => (
+                <CategoryBox
+                  key={item.label}
+                  label={item.label}
+                  icon={item.icon}
+                  selected={activeCategory === item.label}
+                  onCategoryClick={() => setActiveCategory(item.label)}
+                />
+              ))}
             </div>
-          ))}
+          </Container>
           <Table
             listing={listing}
             selectedTrip={selectedTrip}
