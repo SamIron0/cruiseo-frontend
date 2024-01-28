@@ -28,14 +28,11 @@ const Table = ({
       className={`
     ${`border-b border-zinc-700 ${i % 2 && 'bg-zinc-800'}`}`}
     >
-      <td className="flex pl-2 items-center">
+      <td className="flex pl-2 justify-centeritems-center">
         {selectedTrip.id === trip.id ? (
-          <input
-            type="radio"
-            className="w-4 h-4 border border-blue-500 bg-blue-500 p-2 "
-          />
+          <input className="w-4 h-4 rounded-full border border-blue-500 bg-blue-500 p-2 " />
         ) : (
-          <input type="radio" className="w-4 h-4 bg-gray-100 border-gray-300" />
+          <input className="w-4 h-4 rounded-full bg-gray-100 border-gray-300" />
         )}
       </td>
       <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
