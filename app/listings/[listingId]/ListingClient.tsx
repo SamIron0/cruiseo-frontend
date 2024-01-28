@@ -211,6 +211,9 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               ))}
             </div>
           </Container>
+          {activeCategory === 'Existing' ? (
+            
+         
           <Table
             listing={listing}
             selectedTrip={selectedTrip}
@@ -219,6 +222,11 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             priceIsLoading={priceIsLoading}
             loadedPrices={loadedPrices}
           />
+          ): (
+            <Bookin
+          )
+          }
+
           <span className="w-full pt-6  flex justify-center">
             <button
               className=" rounded-lg py-2 px-32 bg-blue-500 text-md"

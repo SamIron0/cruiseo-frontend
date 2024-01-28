@@ -12,16 +12,11 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
 interface DatePickerProps {
-  value: Range;
   onChange: (value: RangeKeyDict) => void;
   disabledDates?: Date[];
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({
-  value,
-  onChange,
-  disabledDates
-}) => {
+const DatePicker: React.FC<DatePickerProps> = ({ onChange, disabledDates }) => {
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -31,7 +26,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   ]);
   return (
     <DateRangePicker
-    minDate={new Date()}
+      minDate={new Date()}
       rangeColors={['#232325']}
       ranges={state}
       onChange={onChange}

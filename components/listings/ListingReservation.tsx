@@ -7,12 +7,12 @@ import Calendar from '../inputs/Calendar';
 
 interface ListingReservationProps {
   price: number;
-  dateRange: Range;
+  dateRange?: Range;
   totalPrice?: number;
   onChangeDate: (value: Range) => void;
   onSubmit: () => void;
   disabled?: boolean;
-  disabledDates: Date[];
+  disabledDates?: Date[];
 }
 
 const ListingReservation: React.FC<ListingReservationProps> = ({
@@ -43,7 +43,6 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
       </div>
       <hr />
       <Calendar
-        value={dateRange}
         disabledDates={disabledDates}
         onChange={(value) => onChangeDate(value.selection)}
       />
@@ -64,7 +63,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
         "
       >
         <div>Total</div>
-        <div>₹ {totalPrice}</div>
+        <div>$ {totalPrice}</div>
       </div>
     </div>
   );
