@@ -157,6 +157,18 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     }
   ];
 
+  const initialDateRange = {
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection'
+  };
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+
+  const disabledDates = useMemo(() => {
+    let dates: Date[] = [];
+    return dates;
+  }, []);
+
   const [date, setDate] = useState<Date>(new Date());
   const [activeCategory, setActiveCategory] = useState(categories[0].label);
   return (
@@ -223,10 +235,17 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               loadedPrices={loadedPrices}
             />
           ) : (
-            <ListingReservation
-              onChangeDate={(value: Date) => setDate(value)}
-              onSubmit={onCreateReservation}
-            />
+            <div className="p-4 max-w-2xl">
+              <ListingReservation
+                price={20}
+                totalPrice={200}
+                onChangeDate={(value) => setDateRange(value)}
+                dateRange={dateRange}
+                onSubmit={onCreateReservation}
+                disabled={isLoading}
+                disabledDates={disabledDates}
+              />
+            </div>
           )}
 
           <span className="w-full pt-6  flex justify-center">
