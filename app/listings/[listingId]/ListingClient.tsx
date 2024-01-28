@@ -143,25 +143,38 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     { property: <Text b>bold</Text>, description: 'Bold style', operation: '' }
   ];
 
-  const [isEven, setIsEven] = useState(false);
   const renderTripRows = listing.activeTrips?.map((trip, i) => (
-    <tr className={`border-b border-zinc-600 ${isEven && 'bg-zinc-800'}`}>
-      <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
-        {trip.date}
-      </th>
-      <td className="pl-10 py-4">
-        {loadedPrices?.get(trip.id) ? (
-          loadedPrices.get(trip.id)
-        ) : (
-          <span
-            onClick={() => getPrice(trip)}
-            className="text-sm px-2 py-1 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
-          >
-            show
-          </span>
-        )}
-      </td>
-      <td className="pl-10 py-4 text-zinc-400">{trip.user_ids?.length}</td>
+    <tr
+      className={`
+    ${
+      selectedTrip.id === trip.id
+        ? ' border rounded-lg border-blue-500'
+        : `border-b border-zinc-700 ${i % 2 && 'bg-zinc-800'}`
+    }`}
+    >
+      <span
+        onClick={() => {
+          setSelectedTrip(trip);
+        }}
+      >
+        <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
+          {trip.date}
+        </th>
+        <td className="pl-10 py-4">
+          {loadedPrices?.get(trip.id) ? (
+            loadedPrices.get(trip.id)
+          ) : (
+            <button
+              onClick={() => getPrice(trip)}
+              disabled={priceIsLoading}
+              className="text-sm px-2 py-1 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
+            >
+              show
+            </button>
+          )}
+        </td>
+        <td className="pl-10 py-4 text-zinc-400">{trip.user_ids?.length}</td>
+      </span>
     </tr>
   ));
 
@@ -206,18 +219,49 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             id={listing?.id}
           />
           <div className="sm:flex sm:flex-1 gap-4 ">
-            <div className="w-full sm:pr-6 "></div>
+            <div className="w-full sm:pr-6 ">
+              <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
+                  <thead className="text-xs text-white uppercase bg-zinc-900">
+                    <tr className="">
+                      <th scope="col" className="pl-10 py-3">
+                        Time
+                      </th>
+                      <th scope="col" className="pl-10 py-3">
+                        Price
+                      </th>
+                      <th scope="col" className="pl-10 py-3">
+                        Riders
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderTripRows}</tbody>
+                </table>
+              </div>{' '}
+              <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
+                  <thead className="text-xs text-white uppercase bg-zinc-900">
+                    <tr className="">
+                      <th scope="col" className="pl-10 py-3">
+                        Time
+                      </th>
+                      <th scope="col" className="pl-10 py-3">
+                        Price
+                      </th>
+                      <th scope="col" className="pl-10 py-3">
+                        Riders
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderTripRows}</tbody>
+                </table>
+              </div>
+            </div>
             {window.innerWidth > 640 && (
               <div className="h-[450px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-10"></div>
             )}{' '}
             <div className="w-full sm:pl-6 flex items-center justify-center">
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateCalendar
-                  sx={{
-                    color: 'white'
-                  }}
-                />{' '}
-              </LocalizationProvider>
+              x
             </div>
           </div>
 
@@ -228,25 +272,6 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
           >
             Reserve
           </button>
-        </div>
-
-        <div className="relative max-w-2xl mx-auto mt-8 shadow-md overflow-x-auto rounded-lg">
-          <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
-            <thead className="text-xs text-white uppercase bg-zinc-900">
-              <tr className="">
-                <th scope="col" className="pl-10 py-3">
-                  Time
-                </th>
-                <th scope="col" className="pl-10 py-3">
-                  Price
-                </th>
-                <th scope="col" className="pl-10 py-3">
-                  Riders
-                </th>
-              </tr>
-            </thead>
-            <tbody>{renderTripRows}</tbody>
-          </table>
         </div>
       </div>
     </Container>
