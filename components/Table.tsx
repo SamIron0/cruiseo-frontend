@@ -38,14 +38,14 @@ const Table = ({
       <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
         {trip.date}
       </th>
-      <td className="pl-10 py-4">
+      <td className="pl-10 py-1">
         {loadedPrices?.get(trip.id) ? (
           loadedPrices.get(trip.id)
         ) : (
           <button
             onClick={() => getPrice(trip)}
             disabled={priceIsLoading}
-            className="text-xs px-1 py-3 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
+            className="text-xs px-4 py-1.5 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
           >
             show
           </button>
