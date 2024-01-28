@@ -26,7 +26,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
   disabledDates
 }) => {
   onsubmit = () => {};
-  return <DateTimePicker />;
-};
+  return <></>;
+}
 
 export default ListingReservation;
