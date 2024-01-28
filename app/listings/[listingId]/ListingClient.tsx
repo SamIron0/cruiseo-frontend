@@ -147,7 +147,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
   const renderTripRows = listing.activeTrips?.map((trip, i) => (
     <tr
       className={`
-                  " border-b  border-zinc-600"${isEven && 'bg-zinc-800'}`}
+                  " border-b  border-zinc-600 "${isEven && 'bg-zinc-800'}`}
     >
       {' '}
       <button
