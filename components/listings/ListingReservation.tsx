@@ -4,6 +4,7 @@ import { Range } from 'react-date-range';
 
 import Button from '../Button';
 import Calendar from '../inputs/Calendar';
+import DateTimePicker from '../DateTimePicker/DateTimePicker';
 
 interface ListingReservationProps {
   price: number;
@@ -34,6 +35,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
         overflow-hidden
       "
     >
+      <DateTimePicker />
       <div className="p-4">
         <Button disabled={disabled} label="Reserve" onClick={onSubmit} />
       </div>
