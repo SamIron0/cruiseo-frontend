@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app/api/createTrip","app/api/send", "components/wheel-picker/WheelPicker.js", "components/dateTimePicker/WheelPicker.js"  ],
+, "app/api/createTrip","app/api/send"  ],
   "exclude": [
     "node_modules"
   ]
