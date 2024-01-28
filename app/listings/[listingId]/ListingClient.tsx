@@ -196,7 +196,9 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             id={listing?.id}
           />
 
-    
+          {categories.map((item) => (
+            <div key={item.label}></div>
+          ))}
           <Table
             listing={listing}
             selectedTrip={selectedTrip}
