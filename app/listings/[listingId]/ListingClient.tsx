@@ -150,25 +150,6 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
       onClick={() => setSelectedTrip(trip)}
       style={{ backgroundColor: i % 2 === 0 ? 'bg-zinc-800' : '' }}
     >
-      <tr className="  border-b border-zinc-600">
-        <th scope="row" className="pl-10 py-4 font-medium whitespace-nowrap">
-          {trip.date}
-        </th>
-        <td className="pl-10 py-4 ">
-          {loadedPrices?.get(trip.id) ? (
-            loadedPrices.get(trip.id)
-          ) : (
-            <button
-              onClick={() => getPrice(trip)}
-              disabled={isLoading || loadedPrices?.get(trip.id) !== undefined}
-              className="flex text-sm justify-center items-center px-2 py-1 bg-zinc-100 text-black rounded-lg shadow flex-shrink-0 active:bg-zinc-300 transition duration-150 transform active:scale-110"
-            >
-              show
-            </button>
-          )}
-        </td>
-        <td className="pl-10 py-4 text-zinc-400"> {trip.user_ids?.length}</td>
-      </tr>
       <tr
         className={`
                   " border-b  border-zinc-600"${isEven && 'bg-zinc-800'}`}
@@ -179,18 +160,8 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
         >
           {trip.date}
         </th>
-        <td className="px-6 py-4">$36</td>
-        <td className="px-6 py-4">2</td>
-      </tr>
-      <tr className="border-b  border-zinc-600">
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium whitespace-nowrap text-white"
-        >
-          2:13
-        </th>
-        <td className="px-6 py-4">$36</td>
-        <td className="px-6 py-4">2</td>
+        <td className="px-6 py-4">{loadedPrices?.get(trip.id)} </td>
+        <td className="px-6 py-4"> {trip.user_ids?.length}</td>
       </tr>
     </button>
   ));
