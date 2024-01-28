@@ -16,7 +16,10 @@ interface DatePickerProps {
   disabledDates?: Date[];
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ onChange, disabledDates }) => {
+const DatePicker: React.FC<DatePickerProps> = ({
+  onChange,
+  disabledDates
+}) => {
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -26,7 +29,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ onChange, disabledDates }) => {
   ]);
   return (
     <DateRangePicker
-      minDate={new Date()}
+    minDate={new Date()}
       rangeColors={['#232325']}
       ranges={state}
       onChange={onChange}

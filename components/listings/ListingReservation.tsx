@@ -6,10 +6,10 @@ import Button from '../Button';
 import Calendar from '../inputs/Calendar';
 
 interface ListingReservationProps {
-  price: number;
+  price?: number;
   dateRange?: Range;
   totalPrice?: number;
-  onChangeDate: (value: Range) => void;
+  onChangeDate: (value: Date) => void;
   onSubmit: () => void;
   disabled?: boolean;
   disabledDates?: Date[];
@@ -44,7 +44,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
       <hr />
       <Calendar
         disabledDates={disabledDates}
-        onChange={(value) => onChangeDate(value.selection)}
+        onChange={(value) => onChangeDate(value.selection.startDate as Date)}
       />
       <hr />
       <div className="p-4">

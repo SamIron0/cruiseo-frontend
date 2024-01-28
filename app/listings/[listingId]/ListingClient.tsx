@@ -15,6 +15,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { TbCar, TbShoppingCart } from 'react-icons/tb';
 import Table from '@/components/Table';
 import CategoryBox from '@/components/CategoryBox';
+import ListingReservation from '@/components/listings/ListingReservation';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -156,6 +157,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     }
   ];
 
+  const [date, setDate] = useState<Date>(new Date());
   const [activeCategory, setActiveCategory] = useState(categories[0].label);
   return (
     <Container>
@@ -212,20 +214,20 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             </div>
           </Container>
           {activeCategory === 'Existing' ? (
-            
-         
-          <Table
-            listing={listing}
-            selectedTrip={selectedTrip}
-            setSelectedTrip={(trip: Trip) => setSelectedTrip(trip)}
-            getPrice={(trip: Trip) => getPrice(trip)}
-            priceIsLoading={priceIsLoading}
-            loadedPrices={loadedPrices}
-          />
-          ): (
-            <Bookin
-          )
-          }
+            <Table
+              listing={listing}
+              selectedTrip={selectedTrip}
+              setSelectedTrip={(trip: Trip) => setSelectedTrip(trip)}
+              getPrice={(trip: Trip) => getPrice(trip)}
+              priceIsLoading={priceIsLoading}
+              loadedPrices={loadedPrices}
+            />
+          ) : (
+            <ListingReservation
+              onChangeDate={(value: Date) => setDate(value)}
+              onSubmit={onCreateReservation}
+            />
+          )}
 
           <span className="w-full pt-6  flex justify-center">
             <button
