@@ -205,9 +205,9 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             priceIsLoading={priceIsLoading}
             loadedPrices={loadedPrices}
           />
-          <span className="w-full flex justify-center">
+          <span className="w-full pt-6  flex justify-center">
             <button
-              className=" rounded-lg py-2 px-8 max-w-2xl bg-blue-500 text-md"
+              className=" rounded-lg py-2 px-16 max-w-2xl bg-blue-500 text-md"
               onClick={() => onCreateReservation()}
               disabled={isLoading}
             >
