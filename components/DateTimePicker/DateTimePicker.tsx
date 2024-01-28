@@ -8,7 +8,6 @@ const hourItems = Array.from({ length: 12 }, (_, index) => ({
   value: index + 1,
   label: index + 1
 }));
-
 const minuteItems = Array.from({ length: 4 }, (_, index) => ({
   value: `${(index * 15).toString().padStart(2, "0")}`,
   label: `${(index * 15).toString().padStart(2, "0")}`
