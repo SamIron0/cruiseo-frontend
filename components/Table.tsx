@@ -58,7 +58,7 @@ const Table = ({
   return (
     <div className="sm:flex sm:flex-1 gap-4 ">
       <div className="w-full ">
-        <div className="relative max-w-2xl mx-auto shadow-md overflow-x-auto rounded-lg">
+        <div className="relative max-w-2xl mx-auto shadow-md overflow-x-auto rounded-t-lg">
           <table className="w-full text-sm text-left rtl:text-right text-zinc-300">
             <thead className="text-xs text-white uppercase bg-zinc-900">
               <tr className="">

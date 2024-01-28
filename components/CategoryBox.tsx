@@ -9,18 +9,20 @@ interface CategoryBoxProps {
   icon: IconType;
   label: string;
   selected?: boolean;
-  onCategoryClick: any;
+  onCategoryClick: (label: string) => void;
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
   icon: Icon,
   label,
   selected,
+  onCategoryClick,
 }) => {
   const { activeCategory, setActiveCategory } = useListings();
 
   const handleCategoryClick = () => {
     setActiveCategory(label);
+    onCategoryClick(label);
   };
   const router = useRouter();
   const params = useSearchParams();
