@@ -14,7 +14,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { TbCar, TbShoppingCart } from 'react-icons/tb';
 import CategoryBox from '@/components/CategoryBox';
-import Table from '@/app/listings/[listingId]/table';
+import Table from '@/components/Table';
 interface ListingClientProps {
   listing: Destination;
 }
