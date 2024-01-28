@@ -13,8 +13,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { TbCar, TbShoppingCart } from 'react-icons/tb';
-import CategoryBox from '@/components/CategoryBox';
 import Table from '@/components/Table';
+import CategoryBox from '@/components/CategoryBox';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -197,7 +197,16 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
           />
 
           {categories.map((item) => (
-            <div key={item.label}></div>
+            <div key={item.label}>
+              <CategoryBox
+            key={item.label}
+            label={item.label}
+            icon={item.icon}
+            selected={activeCategory === item.label}
+            onCategoryClick={() => setActiveCategory(item.label)}
+          />
+
+            </div>
           ))}
           <Table
             listing={listing}

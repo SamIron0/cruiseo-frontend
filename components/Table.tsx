@@ -30,7 +30,7 @@ const Table = ({
     >
       <td className=" pl-2 py-4 ">
         {selectedTrip.id === trip.id ? (
-          <input className="w-4 h-4 rounded-full border border-blue-500 bg-blue-500 p-2 " />
+          <input className="w-4 h-4 rounded-full border border-blue-500 bg-blue-500 p-1 " />
         ) : (
           <input className="w-4 h-4 rounded-full bg-gray-100 border-gray-300" />
         )}
