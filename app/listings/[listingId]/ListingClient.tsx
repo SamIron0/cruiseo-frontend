@@ -166,8 +166,9 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
     return dates;
   }, []);
 
-  const [date, setDate] = useState<Date>(new Date());
+  const [date, setDate] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState(categories[0].label);
+  console.log('date', listing);
   return (
     <Container>
       <div
@@ -233,15 +234,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             />
           ) : (
             <div className="flex items-center justify-center">
-              <ListingReservation
-                price={20}
-                totalPrice={200}
-                onChangeDate={(value) => setDateRange(value)}
-                dateRange={dateRange}
-                onSubmit={onCreateReservation}
-                disabled={isLoading}
-                disabledDates={disabledDates}
-              />
+              <ListingReservation onChangeDate={(value) => setDate(value)} />
             </div>
           )}
 

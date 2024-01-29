@@ -1,62 +1,28 @@
 'use client';
 
-import { Range } from 'react-date-range';
-
-import Button from '../Button';
-import Calendar from '../inputs/Calendar';
+import { useState } from 'react';
 import DateTimePicker from '../DateTimePicker/DateTimePicker';
 
 interface ListingReservationProps {
-  price: number;
-  dateRange: Range;
-  totalPrice: number;
-  onChangeDate: (value: Range) => void;
-  onSubmit: () => void;
-  disabled?: boolean;
-  disabledDates: Date[];
+  onChangeDate: (value: string) => void;
+  onSubmit?: () => void;
 }
 
-const ListingReservation: React.FC<ListingReservationProps> = ({
-  price,
-  dateRange,
-  totalPrice,
+const ListingReservation = ({
   onChangeDate,
-  onSubmit,
-  disabled,
-  disabledDates
-}) => {
+  onSubmit
+}: ListingReservationProps) => {
+  const onChange = (value: string) => {
+    onChangeDate(value);
+    console.log('dateinlr',value);
+  };
   return (
     <div>
-      <DateTimePicker />
-
-      <div
-        className="
-      bg-white 
-        rounded-xl 
-        border-[1px]
-      border-neutral-200 
-        overflow-hidden
-      "
-      >
-        <div className="p-4">
-          <Button disabled={disabled} label="Reserve" onClick={onSubmit} />
-        </div>
-        <hr />
-        <div
-          className="
-          p-4 
-          flex 
-          flex-row 
-          items-center 
-          justify-between
-          font-semibold
-          text-lg
-        "
-        >
-          <div>Total</div>
-          <div>₹ {totalPrice}</div>
-        </div>
-      </div>
+      <DateTimePicker
+        onChange={(date: string, hour: number, minute: number, ampm: string) =>
+          onChange(`${date} ${hour}:${minute} ${ampm}`)
+        }
+      />
     </div>
   );
 };
