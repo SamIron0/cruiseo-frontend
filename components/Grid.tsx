@@ -95,7 +95,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
               xl:grid-cols-5
               2xl:grid-cols-6
               gap-7
-              pb-12
+              pb-48
             "
           >
             {category === 'All'

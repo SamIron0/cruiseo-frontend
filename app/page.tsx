@@ -10,12 +10,10 @@ export default async function Home({ searchParams }: HomeProps) {
   const session = await getSession();
 
   return (
-    <div className='bg-zinc-900 text-white'>
       <Grid
         user={session?.user}
         searchParams={searchParams}
         userDetails={getUserDetails()}
       ></Grid>
-    </div>
   );
 }
