@@ -94,7 +94,11 @@ export default function RootLayout({
               <ToasterProvider />
               <SearchModal />
             </ClientOnly>
-            <div>{children}</div>
+            <div
+              className={cn('max-w-screen-xl mx-auto xl:px-20 md:px-10 px-4')}
+            >
+              {children}
+            </div>
             <SpeedInsights />
             <Analytics />
             <Footer />
