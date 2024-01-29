@@ -87,7 +87,7 @@ const WheelPickerComponent = ({
           const cos = Math.sqrt(1 - sin ** 2);
           const [div] = item.getElementsByTagName("div");
           div.style.transform = `rotateX(${Math.asin(sin)}rad) scale(${cos})`;
-          div.style.transformOrigin = "70%";
+          div.style.transformOrigin = "right";
         });
     }
   }
@@ -111,7 +111,7 @@ const WheelPickerComponent = ({
           const cos = Math.sqrt(1 - sin ** 2);
           const [div] = item.getElementsByTagName("div");
           div.style.transform = `rotateX(${Math.asin(sin)}rad) scale(${cos})`;
-          div.style.transformOrigin = "50%";
+          div.style.transformOrigin = "center";
         });
     }
   }
@@ -135,7 +135,7 @@ const WheelPickerComponent = ({
           const cos = Math.sqrt(1 - sin ** 2);
           const [div] = item.getElementsByTagName("div");
           div.style.transform = `rotateX(${Math.asin(sin)}rad) scale(${cos})`;
-          div.style.transformOrigin = "30%";
+          div.style.transformOrigin = "left";
         });
     }
   }
@@ -159,7 +159,7 @@ const WheelPickerComponent = ({
           const cos = Math.sqrt(1 - sin ** 2);
           const [div] = item.getElementsByTagName("div");
           div.style.transform = `rotateX(${Math.asin(sin)}rad) scale(${cos})`;
-          div.style.transformOrigin = "30%";
+          div.style.transformOrigin = "left";
         });
     }
   }
