@@ -10,13 +10,16 @@ import { useEffect, useState } from 'react';
 import { all } from 'axios';
 import { useListings } from '@/app/providers/ListingProvider';
 import { User } from '@supabase/supabase-js';
+
+import { Skeleton } from '@/components/ui/skeleton';
+
 interface GridProps {
   searchParams: IListingsParams;
   userDetails: any;
   user: User | undefined;
 }
 
-export function Grid({ searchParams, user,userDetails }: GridProps) {
+export function Grid({ searchParams, user, userDetails }: GridProps) {
   const { allListings, setAllListings, activeCategory, setUserDetails } =
     useListings();
   const location = {
@@ -72,7 +75,6 @@ export function Grid({ searchParams, user,userDetails }: GridProps) {
       </ClientOnly>
     );
   }
-
   const renderCards = () => {
     const category: any = activeCategory;
     // remove -----------
@@ -80,8 +82,8 @@ export function Grid({ searchParams, user,userDetails }: GridProps) {
     return (
       <>
         {/* @ts-expect-error */}
-        <Navbar user={user}/>
-        {allListings && (
+        <Navbar user={user} />
+        {allListings ? (
           <div
             className="
               pt-[198px]
@@ -112,6 +114,28 @@ export function Grid({ searchParams, user,userDetails }: GridProps) {
                       data={listing}
                     />
                   ))}
+          </div>
+        ) : (
+          <div
+            className="
+            pt-[198px]
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            md:grid-cols-3 
+            lg:grid-cols-4
+            xl:grid-cols-5
+            2xl:grid-cols-6
+            gap-7
+          "
+          >
+            <div className="flex flex-col space-y-3">
+              <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+                <Skeleton className="h-4 w-[200px]" />
+              </div>
+            </div>
           </div>
         )}
       </>
