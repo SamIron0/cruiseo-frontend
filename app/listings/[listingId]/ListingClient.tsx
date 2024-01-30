@@ -224,15 +224,8 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             </div>
           </Container>
           {activeCategory === 'Existing' ? (
-            <Table
-              listing={listing}
-              selectedTrip={selectedTrip}
-              setSelectedTrip={(trip: Trip) => setSelectedTrip(trip)}
-              getPrice={(trip: Trip) => getPrice(trip)}
-              priceIsLoading={priceIsLoading}
-              loadedPrices={loadedPrices}
-            />
-            
+           <Table/>
+
           ) : (
             <div className="flex items-center justify-center">
               <ListingReservation onChangeDate={(value) => setDate(value)} />
