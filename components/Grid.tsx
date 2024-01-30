@@ -80,7 +80,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
     // remove -----------
 
     return (
-      <>
+      <div>
         {/* @ts-expect-error */}
         <Navbar user={user} />
         {allListings ? (
@@ -161,7 +161,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
   return (
