@@ -12,7 +12,7 @@ import { useListings } from '@/app/providers/ListingProvider';
 import { TbCar, TbShoppingCart } from 'react-icons/tb';
 import CategoryBox from '@/components/CategoryBox';
 import ListingReservation from '@/components/listings/ListingReservation';
-import Table from '@/components/Table';
+import { Table } from '@/components/ui/table';
 interface ListingClientProps {
   listing: Destination;
 }
