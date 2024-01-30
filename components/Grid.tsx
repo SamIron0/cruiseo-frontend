@@ -81,8 +81,6 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
 
     return (
       <>
-        {/* @ts-expect-error */}
-        <Navbar user={user} />
         {allListings ? (
           <div
             className="
@@ -166,6 +164,9 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
   };
   return (
     <ClientOnly>
+      {/* @ts-expect-error */}
+      <Navbar user={user} />
+
       <Container>{renderCards()}</Container>
     </ClientOnly>
   );
