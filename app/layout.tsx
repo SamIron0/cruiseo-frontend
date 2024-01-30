@@ -95,7 +95,7 @@ export default function RootLayout({
               <SearchModal />
             </ClientOnly>
             <div
-              className={cn('max-w-screen-xl bg-primary text-primary-foreground ')}
+              className={cn('max-w-screen-xl bg-primary text-primary-foreground mx-auto xl:px-20 md:px-10')}
             >
               {children}
             </div>
