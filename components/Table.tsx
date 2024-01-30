@@ -10,7 +10,7 @@ interface TableProps {
   priceIsLoading: boolean;
   loadedPrices: Map<string, number>;
 }
-const Table = ({
+const Table2 = ({
   listing,
   selectedTrip,
   setSelectedTrip,
@@ -81,4 +81,4 @@ const Table = ({
     </div>
   );
 };
-export default Table;
+export default Table2;

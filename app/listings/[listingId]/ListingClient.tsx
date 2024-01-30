@@ -10,9 +10,9 @@ import Container from '@/components/Container';
 import ListingHead from '@/components/listings/ListingHead';
 import { useListings } from '@/app/providers/ListingProvider';
 import { TbCar, TbShoppingCart } from 'react-icons/tb';
-import Table from '@/components/Table';
 import CategoryBox from '@/components/CategoryBox';
 import ListingReservation from '@/components/listings/ListingReservation';
+import Table from '@/components/Table';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -168,7 +168,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
 
   const [date, setDate] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState(categories[0].label);
-  console.log('date', listing);
+  console.log('date', date);
   return (
     <Container>
       <div
@@ -232,6 +232,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               priceIsLoading={priceIsLoading}
               loadedPrices={loadedPrices}
             />
+            
           ) : (
             <div className="flex items-center justify-center">
               <ListingReservation onChangeDate={(value) => setDate(value)} />
