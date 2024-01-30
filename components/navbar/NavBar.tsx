@@ -6,15 +6,12 @@ import Logo from './Logo';
 import Search from './Search';
 import UserMenu from './UserMenu';
 import { UserDetails } from '@/types';
+import { User } from '@supabase/supabase-js';
 
-export default async function Navbar() {
-  const supabase = createServerSupabaseClient();
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
-
+export default async function Navbar(user: User | null | undefined) {
+ 
   return (
-    <div className="fixed w-full  z-10 shadow-sm">
+    <div className="fixed w-full z-10 shadow-sm">
       <div>
         <div className="py-4 border-b-[1px]">
           <Container>
