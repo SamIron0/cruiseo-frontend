@@ -8,12 +8,12 @@ import UserMenu from './UserMenu';
 import { UserDetails } from '@/types';
 import { User } from '@supabase/supabase-js';
 
-export default async function Navbar(user: User | null | undefined) {
+export default async function Navbar(user: User) {
  
   return (
-    <div className="fixed w-full z-10 shadow-sm">
+    <div className="fixed w-full z-10 shadow-sm  shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div>
-        <div className="py-4 border-b-[1px]">
+        <div className="py-4 sm:px-8 border-[#232325] border-b-[1px]">
           <Container>
             <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
               <Logo />

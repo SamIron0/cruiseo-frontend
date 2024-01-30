@@ -80,7 +80,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
     // remove -----------
 
     return (
-      <div>
+      <>
         {/* @ts-expect-error */}
         <Navbar user={user} />
         {allListings ? (
@@ -128,7 +128,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
             xl:grid-cols-5
             2xl:grid-cols-6
             gap-7
-            pb-12
+            pb-48
           "
           >
             <div className="flex flex-col space-y-3">
@@ -161,7 +161,7 @@ export function Grid({ searchParams, user, userDetails }: GridProps) {
             </div>
           </div>
         )}
-      </div>
+      </>
     );
   };
   return (
