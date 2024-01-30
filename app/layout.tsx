@@ -87,7 +87,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body>
+      <body className='dark'>
         <SupabaseProvider>
           <ListingsProvider>
             <ClientOnly>
