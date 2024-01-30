@@ -1,19 +1,25 @@
 import { Grid } from '@/components/Grid';
 import { IListingsParams } from './actions/getListings';
-import { getSession, getUserDetails } from './supabase-server';
-
+import {
+  createServerSupabaseClient,
+  getSession,
+  getUserDetails
+} from './supabase-server';
+import { useSupabase } from './supabase-provider';
 interface HomeProps {
   searchParams: IListingsParams;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const session = await getSession();
-
+  const supabase = createServerSupabaseClient();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
   return (
-      <Grid
-        user={session?.user}
-        searchParams={searchParams}
-        userDetails={getUserDetails()}
-      ></Grid>
+    <Grid
+      user={user}
+      searchParams={searchParams}
+      userDetails={getUserDetails()}
+    ></Grid>
   );
 }

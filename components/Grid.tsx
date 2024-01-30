@@ -16,7 +16,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 interface GridProps {
   searchParams: IListingsParams;
   userDetails: any;
-  user: User | undefined;
+  user: User | null;
 }
 
 export function Grid({ searchParams, user, userDetails }: GridProps) {
