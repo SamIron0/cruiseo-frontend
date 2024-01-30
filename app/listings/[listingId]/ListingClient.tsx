@@ -13,6 +13,7 @@ import { TbCar, TbShoppingCart } from 'react-icons/tb';
 import CategoryBox from '@/components/CategoryBox';
 import ListingReservation from '@/components/listings/ListingReservation';
 import { Table } from '@/components/ui/table';
+import { TripsTable } from '@/components/Table';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -224,7 +225,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
             </div>
           </Container>
           {activeCategory === 'Existing' ? (
-           <Table/>
+           <TripsTable/>
 
           ) : (
             <div className="flex items-center justify-center">
