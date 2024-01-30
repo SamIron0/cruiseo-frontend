@@ -102,7 +102,7 @@ export default function UserMenu({ user }: UserMenuProps) {
           "
         >
           <div className="flex flex-col cursor-pointer">
-            {user ? (
+            {user?.id ? (
               <>
                 <MenuItem
                   label="Account"
