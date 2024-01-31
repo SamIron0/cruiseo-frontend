@@ -61,6 +61,7 @@ const data: Booking[] = [
     price: <div className="text-right font-medium">242</div>,
     riders: 2
   },
+  
   {
     date: 'bhqecj4p',
     price: <div className="text-right font-medium">242</div>,
