@@ -39,11 +39,21 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { Destination, Trip } from '@/types';
+
+interface TripsTableProps {
+  listing: Destination;
+  selectedTrip: Trip;
+  setSelectedTrip: (trip: Trip) => void;
+  getPrice: (trip: Trip) => void;
+  priceIsLoading: boolean;
+  loadedPrices: Map<string, number>;
+}
 
 const data: Payment[] = [
   {
     id: 'm5gr84i9',
-    amount: 316,
+    amount: <div className="text-right font-medium">242</div>,
     status: 'success',
     email: 'ken99@yahoo.com'
   },
@@ -75,7 +85,7 @@ const data: Payment[] = [
 
 export type Payment = {
   id: string;
-  amount: number;
+  amount: number  | any;
   status: 'pending' | 'processing' | 'success' | 'failed';
   email: string;
 };
@@ -104,11 +114,26 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
+    accessorKey: 'date',
+    header: 'Date',
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue('status')}</div>
     )
+  },
+  {
+    accessorKey: 'price',
+    header: () => <div className="text-right">Price</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('amount'));
+
+      // Format the amount as a dollar amount
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(amount);
+
+      return <div className="text-right font-medium">{formatted}</div>;
+    }
   },
   {
     accessorKey: 'email',
@@ -125,21 +150,7 @@ export const columns: ColumnDef<Payment>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>
   },
-  {
-    accessorKey: 'amount',
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'));
 
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    }
-  },
   {
     id: 'actions',
     enableHiding: false,
@@ -171,7 +182,14 @@ export const columns: ColumnDef<Payment>[] = [
   }
 ];
 
-export function TripsTable() {
+export function TripsTable({
+  listing,
+  selectedTrip,
+  setSelectedTrip,
+  getPrice,
+  priceIsLoading,
+  loadedPrices
+}: TripsTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
