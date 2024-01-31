@@ -101,27 +101,25 @@ export const columns: ColumnDef<Booking>[] = [
   {
     accessorKey: 'date',
     header: 'Date',
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('status')}</div>
-    )
+    cell: ({ row }) => <div className="capitalize">{row.getValue('date')}</div>
   },
   {
     accessorKey: 'price',
     header: () => <div className="text-right">Price</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'));
+      const amount = parseFloat(row.getValue('price'));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD'
+        currency: 'CAD'
       }).format(amount);
 
       return <div className="text-right font-medium">{formatted}</div>;
     }
   },
   {
-    accessorKey: 'email',
+    accessorKey: 'riders',
     header: ({ column }) => {
       return (
         <Button
@@ -133,7 +131,7 @@ export const columns: ColumnDef<Booking>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>
+    cell: ({ row }) => <div className="lowercase">{row.getValue('riders')}</div>
   }
 ];
 

@@ -14,6 +14,7 @@ import CategoryBox from '@/components/CategoryBox';
 import ListingReservation from '@/components/listings/ListingReservation';
 import { Table } from '@/components/ui/table';
 import { TripsTable } from '@/components/Table';
+import { Button } from '@/components/ui/button';
 interface ListingClientProps {
   listing: Destination;
 }
@@ -180,7 +181,8 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
         "
       >
         <div className="flex flex-col pb-12  gap-6">
-          <button
+          <Button
+             
             onClick={() => window.history.back()}
             type="button"
             className="w-32 flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-all duration-200 bg-white border rounded-lg gap-x-2 dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700 hover:scale-105 active:scale-90"
@@ -200,7 +202,7 @@ const ListingClient: React.FC<ListingClientProps> = ({ listing }) => {
               />
             </svg>
             <span>Go back</span>
-          </button>
+          </Button>
 
           <ListingHead
             title={listing?.name}
