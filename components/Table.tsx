@@ -50,39 +50,40 @@ interface TripsTableProps {
   loadedPrices: Map<string, number>;
 }
 
-const data: Booking[] = [
-  {
-    price: <div className="text-right font-medium">242</div>,
-    date: 'bhqecj4p',
-    riders: 2
-  },
-  {
-    date: 'bhqecj4p',
-    price: <div className="text-right font-medium">242</div>,
-    riders: 2
-  },
-
-  {
-    date: 'bhqecj4p',
-    price: <div className="text-right font-medium">242</div>,
-    riders: 2
-  },
-  {
-    date: 'bhqecj4p',
-    price: <div className="text-right font-medium">242</div>,
-    riders: 1
-  },
-  {
-    date: 'bhqecj4p',
-    price: <div className="text-right font-medium">242</div>,
-    riders: 1
-  }
-];
-
 export type Booking = {
   date: string;
-  price: React.JSX.Element | number;
+  price: React.JSX.Element | number | undefined;
   riders: number;
+};
+
+const data = (
+  listing: Destination,
+  selectedTrip: Trip,
+  setSelectedTrip: (trip: Trip) => void,
+  getPrice: (trip: Trip) => void,
+  priceIsLoading: boolean,
+  loadedPrices: Map<string, number>
+) => {
+  let result: Booking[] = [];
+  listing.activeTrips?.map((trip) =>
+    result.push({
+      price: loadedPrices?.get(trip.id) ? (
+        loadedPrices.get(trip.id)
+      ) : (
+        <button
+          onClick={() => getPrice(trip)}
+          disabled={priceIsLoading}
+          className="text-xs px-4 py-1.5 bg-zinc-100 text-black rounded-lg shadow active:bg-zinc-300 transition duration-150 transform active:scale-110"
+        >
+          show
+        </button>
+      ),
+      date: trip.date,
+      riders: trip.user_ids?.length || 0
+    })
+  );
+
+  return result;
 };
 
 export const columns: ColumnDef<Booking>[] = [
@@ -153,7 +154,14 @@ export function TripsTable({
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
-    data,
+    data: data(
+      listing,
+      selectedTrip,
+      setSelectedTrip,
+      getPrice,
+      priceIsLoading,
+      loadedPrices
+    ),
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -173,7 +181,6 @@ export function TripsTable({
 
   return (
     <div className="w-full">
-      
       <div className="rounded-md border">
         <Table>
           <TableHeader>
