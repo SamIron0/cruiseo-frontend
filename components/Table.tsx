@@ -50,59 +50,44 @@ interface TripsTableProps {
   loadedPrices: Map<string, number>;
 }
 
-const data: Payment[] = [
+const data: Booking[] = [
   {
-    id: 'm5gr84i9',
-    amount: <div className="text-right font-medium">242</div>,
-    status: 'success',
-    email: 'ken99@yahoo.com'
+    price: <div className="text-right font-medium">242</div>,
+    date: 'bhqecj4p',
+    riders: 2
   },
   {
-    id: '3u1reuv4',
-    amount: 242,
-    status: 'success',
-    email: 'Abe45@gmail.com'
+    date: 'bhqecj4p',
+    price: <div className="text-right font-medium">242</div>,
+    riders: 2
   },
   {
-    id: 'derv1ws0',
-    amount: 837,
-    status: 'processing',
-    email: 'Monserrat44@gmail.com'
+    date: 'bhqecj4p',
+    price: <div className="text-right font-medium">242</div>,
+    riders: 2
   },
   {
-    id: '5kma53ae',
-    amount: 874,
-    status: 'success',
-    email: 'Silas22@gmail.com'
+    date: 'bhqecj4p',
+    price: <div className="text-right font-medium">242</div>,
+    riders: 1
   },
   {
-    id: 'bhqecj4p',
-    amount: 721,
-    status: 'failed',
-    email: 'carmella@hotmail.com'
+    date: 'bhqecj4p',
+    price: <div className="text-right font-medium">242</div>,
+    riders: 1
   }
 ];
 
-export type Payment = {
-  id: string;
-  amount: number  | any;
-  status: 'pending' | 'processing' | 'success' | 'failed';
-  email: string;
+export type Booking = {
+  date: string;
+  price: React.JSX.Element | number;
+  riders: number;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Booking>[] = [
   {
     id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
+
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
@@ -149,36 +134,6 @@ export const columns: ColumnDef<Payment>[] = [
       );
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>
-  },
-
-  {
-    id: 'actions',
-    enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    }
   }
 ];
 
