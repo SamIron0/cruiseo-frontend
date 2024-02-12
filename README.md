@@ -1,17 +1,13 @@
 # Carpool Platform
 
-The Carpool Platform is a highly efficient web application designed to facilitate carpooling services. It employs a Selenium WebDriver-based web scraper to extract trip prices. The application is hosted locally on a Macbook server and is made accessible using Nginx. Moreover, it leverages reputable technologies and services like AWS API Gateway, FastAPI, BeautifulSoup, JSON, and much more.
+The Carpool Platform is an effective web application built to streamline carpooling services. It utilizes a web scraper, based on the Selenium WebDriver, to draw out trip costs, which are then accessed by an AWS Lambda function when triggered through an AWS API Gateway by nExtsjs frontend code. The scraper is locally hosted on a MacBook server and made available with Nginx, while the frontend is hosted on Vercel. Additionally, the platform takes advantage of well-regarded technologies and services such as AWS API Gateway, FastAPI, BeautifulSoup, JSON, among others.
+
+This repo contains only the front end code. Refer to the README file in the general repo @ https://github.com/SamIron0/cruiseo for the full project links.
 
 ## Key Features 
-
-- A Selenium WebDriver-based web scraper developed to capture trip prices from Uber. 
-- The scraper script is locally hosted on a MacBook server which is made accessible using Nginx.
-- A RESTful API constructed using AWS API Gateway and FastAPI to facilitate interaction with a Node.js lambda function hosted on AWS as the backend service. 
-- Efficient email parsing in the scraper script using Beautiful Soup.
 - A frontend structure architected using Next.js, React, and TypeScript (TSX) on Vercel.
-- Integration of Tailwind CSS to design a visually compelling website layout.
-- Use of a local script running on a uvicorn server that includes crucial modules like FastAPI, BeautifulSoup, JSON, and others.
-- Secure management of environment variables via dotenv while adjusting Chrome WebDriver settings for optimum performance.
+- Integration of Tailwind CSS and shadcn ui to design a visually compelling website layout.
+- Auth handling using Supabase 
 
 ## Installation
 
@@ -19,12 +15,12 @@ To install the required packages for the Carpool Platform, follow the steps belo
 
 1. Clone the repository to your local machine.
    ```bash
-   git clone https://github.com/SamIron0/cruiseo
+   git clone https://github.com/SamIron0/cruiseo-frontend
    ```
 
 2. Navigate to the project directory.
    ```bash
-   cd carpool-platform
+   cd cruiseo-frontend
    ```
 
 3. Install the dependencies using npm.
@@ -52,7 +48,7 @@ Make sure you have completed the installation and build steps before running the
 
 ## Configuration
 
-The Carpool Platform uses environment variables for configuration. Create a `.env` file in the root directory of the project and add the required variables. Refer to the `.env.example` file for the list of variables needed.
+The Carpool projects uses environment variables for configuration. Create a `.env` file in the root directory of the project and add the required variables. Refer to the `.env.example` file for the list of variables needed.
 
 ## Contributing
 
