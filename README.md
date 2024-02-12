@@ -4,8 +4,8 @@ The Carpool Platform is a highly efficient web application designed to facilitat
 
 ## Key Features 
 
-- A Selenium WebDriver-based web scraper developed to capture trip prices from different sources. 
-- The app is locally hosted on a MacBook server which is made accessible using Nginx.
+- A Selenium WebDriver-based web scraper developed to capture trip prices from Uber. 
+- The scraper script is locally hosted on a MacBook server which is made accessible using Nginx.
 - A RESTful API constructed using AWS API Gateway and FastAPI to facilitate interaction with a Node.js lambda function hosted on AWS as the backend service. 
 - Efficient email parsing in the scraper script using Beautiful Soup.
 - A frontend structure architected using Next.js, React, and TypeScript (TSX) on Vercel.
