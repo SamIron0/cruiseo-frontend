@@ -95,7 +95,7 @@ export default function RootLayout({
               <SearchModal />
             </ClientOnly>
             <div
-              className={cn(' text-primary-foreground')}
+              className={cn('text-primary-foreground')}
             >
               {children}
             </div>
